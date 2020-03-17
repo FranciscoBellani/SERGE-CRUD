@@ -5,12 +5,12 @@ const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   { path: 'home', loadChildren: () => import('./home/home.module').then(m => m.HomePageModule) },
   {
-    path: 'add-song',
-    loadChildren: () => import('./add-song/add-song.module').then(m => m.AddSongPageModule)
+    path: 'add-Reserva',
+    loadChildren: () => import('./add-Reserva/add-Reserva.module').then(m => m.AddReservaPageModule)
   },
   {
-    path: 'edit-song/:id',
-    loadChildren: () => import('./edit-song/edit-song.module').then(m => m.EditSongPageModule)
+    path: 'edit-Reserva/:id',
+    loadChildren: () => import('./edit-Reserva/edit-Reserva.module').then(m => m.EditReservaPageModule)
   },
 ];
 

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SongService } from './../shared/song.service';
+import { Reservaservice } from './../shared/Reserva.service';
 
 @Component({
   selector: 'app-home',
@@ -8,19 +8,19 @@ import { SongService } from './../shared/song.service';
 })
 
 export class HomePage implements OnInit {
-  Songs: any = [];
+  Reservas: any = [];
 
   constructor(
-    private songService: SongService
+    private Reservaservice: Reservaservice
   ) {
   }
 
   ngOnInit() { }
 
   ionViewDidEnter() {
-    this.songService.getSongList().subscribe((res) => {
+    this.Reservaservice.getReservaList().subscribe((res) => {
       console.log(res)
-      this.Songs = res;
+      this.Reservas = res;
     })
   }
 
@@ -28,12 +28,12 @@ export class HomePage implements OnInit {
 
 
 
-  deleteSong(song, i) {
+  deleteReserva(Reserva, i) {
     if (window.confirm('Do you want to delete user?')) {
-      this.songService.deleteSong(song._id)
+      this.Reservaservice.deleteReserva(Reserva._id)
         .subscribe(() => {
-          this.Songs.splice(i, 1);
-          console.log('Song deleted!')
+          this.Reservas.splice(i, 1);
+          console.log('Reserva Borrada')
         }
         )
     }

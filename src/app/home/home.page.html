@@ -1,7 +1,7 @@
 <ion-header>
   <ion-toolbar>
     <ion-title>
-      Serge Tecpetrol
+      SERGE TECPETROL
     </ion-title>
   </ion-toolbar>
 </ion-header>
@@ -9,20 +9,21 @@
 <ion-content>
   <ion-list class="ios list-ios hydrated">
     <ion-list-header class="ios hydrated">
-      Sus Reservas:
+      <h2>  SUS RESERVAS:</h2>
     </ion-list-header>
 
-    <ion-item *ngFor="let song of Songs" class="item-label item ios in-list ion-focusable hydrated">
+    <ion-item *ngFor="let reserva of Reservas" class="item-label item ios in-list ion-focusable hydrated">
       <ion-label class="sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated">
-        <h2>{{song.nombre}}</h2>
-        <h3>{{song.categoria}}</h3>
+        <h2>{{reserva.nombre}}</h2>
+        <h3>{{reserva.categoria}}</h3>
+        <h3>{{reserva.ubicacion}}</h3>
       </ion-label>
 
       <div class="item-note" item-end>
-        <button ion-button clear [routerLink]="['/edit-song/', song._id]">
+        <!-- <button ion-button clear [routerLink]="['/edit-Reserva/', Reserva._id]">
           <ion-icon name="create" style="zoom:2.0"></ion-icon>
-        </button>
-        <button ion-button clear (click)="deleteSong(song, i)">
+        </button> -->
+        <button ion-button clear (click)="deleteReserva(Reserva, i)">
           <ion-icon name="trash" style="zoom:2.0"></ion-icon>
         </button>
       </div>
@@ -31,7 +32,7 @@
 
 
   <!-- fab placed to the bottom start -->
-  <ion-fab vertical="bottom" horizontal="end" slot="fixed" routerLink="/add-song">
+  <ion-fab vertical="bottom" horizontal="end" slot="fixed" routerLink="/add-Reserva">
     <ion-fab-button>
       <ion-icon name="add"></ion-icon>
     </ion-fab-button>

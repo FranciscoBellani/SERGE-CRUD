@@ -1,5 +1,15 @@
 {
   "name": "ionic-angular-crud-app",
   "integrations": {},
-  "type": "angular"
+  "type": "angular",
+
+  "proxies": [
+    {
+      "path": "shared/*",
+      "proxyUrl": "http://192.168.0.10:8080/restful/services/ReservaHabitacion/actions/crearReservaDeHabitacion/invoke/*"
+    }
+  ]
+
 }
+
+
