@@ -10,25 +10,61 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 export class Reservaservice {
 
-  httpOptions = {
+
+  public fechaInicio: String;
+  public fechaFin: String;
+  public email: String;
+  public consulta: any
+  constructor(private http: HttpClient) { }
+
+   httpOptions = {
     headers: new HttpHeaders(
       { 
       "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-      "Access-Control-Allow-Origin": "http://localhost:8080:8080",
+      "Access-Control-Allow-Origin": "http://localhost:8080",
       'Content-Type': 'application/json' ,
       'Accept':  'application/json;profile=urn:org.apache.isis/v1',
       'Authorization': 'Basic aXNpcy1tb2R1bGUtc2VjdXJpdHktYWRtaW46cGFzcw==',    
     })
   };
 
-  constructor(private http: HttpClient) { }
-
-  addReserva(Reserva: Reserva): Observable<any> {
-    return this.http.post<Reserva>('http://localhost:8080/restful/services/ReservaHabitacion/actions/crearReservaDeHabitacion/invoke', Reserva, this.httpOptions)
-      .pipe(        
-        catchError(this.handleError<Reserva>('Crear Reserva'))
-      );
+    addReserva(reservaParameter: Reserva) 
+    
+    {
+       this.fechaInicio = reservaParameter.fechaInicio;
+       this.fechaFin = reservaParameter.fechaFin;
+       this.email=reservaParameter.email;
+    
+    
+      const httpOptions = {
+        headers: new HttpHeaders(
+        { 
+          "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
+          "Access-Control-Allow-Origin": "http://localhost:8080",
+          'Content-Type': 'application/json' ,
+          'Accept':  'application/json;profile=urn:org.apache.isis/v1',
+          'Authorization': 'Basic aXNpcy1tb2R1bGUtc2VjdXJpdHktYWRtaW46cGFzcw==',    
+         })
+        };
+    
+           this.consulta = this.http.post('http://localhost:8080/restful/services/ReservaHabitacion/actions/crearReservaDeHabitacion/invoke',
+            {
+             "fechaInicio": {
+             "value": this.fechaInicio
+            },
+              "fechaFin": {
+              "value": this.fechaFin
+            },
+               "email": {
+               "value": this.email
+            }
+          }
+           , httpOptions);
+             console.log("Consulta: "+ JSON.stringify(this.consulta));
+             return this.consulta;
+             
   }
+
 
   getReserva(id): Observable<Reserva[]> {
     return this.http.get<Reserva[]>('http://localhost:3000/api/get-Reserva/' + id)
@@ -47,7 +83,7 @@ export class Reservaservice {
   }
 
   updateReserva(id, Reserva: Reserva): Observable<any> {
-    return this.http.put('http://localhost:3000/api/update-Reserva/' + id,  this.httpOptions)
+    return this.http.put('http://localhost:3000/api/update-Reserva/' + id, Reserva, this.httpOptions)
       .pipe(
         tap(_ => console.log(`Reserva updated: ${id}`)),
         catchError(this.handleError<Reserva[]>('Update Reserva'))

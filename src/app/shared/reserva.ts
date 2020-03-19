@@ -1,5 +1,5 @@
 export class Reserva {
-    fechaInicio: Date;
-    fechaFin: Date;
+    fechaInicio: string;
+    fechaFin: string;
     email: string
 }
