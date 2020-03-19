@@ -1,5 +1,5 @@
-# ionic-angular-crud-app
-A step by step Ionic 4 Cordova tutorial, In this tutorial, we will learn how to create a CRUD (Create, Read, Update, Delete) Mobile app (Android/iOS) with Ionic 4 and Angular 8
+# CRUD SERGE ANGULAR 
+Gestion de reservas de habitaciones y vehiculos en app IOS y Android
 
 ## Article
 [Build Ionic 4 Cordova and Angular 8 CRUD Mobile App](https://www.positronx.io/build-ionic-cordova-angular-crud-mobile-app/)
