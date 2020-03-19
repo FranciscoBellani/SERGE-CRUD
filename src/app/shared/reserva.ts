@@ -1,6 +1,5 @@
 export class Reserva {
-    _id: number;
-    fechaInicio: string;
-    fechaFin: string;
+    fechaInicio: Date;
+    fechaFin: Date;
     email: string
 }

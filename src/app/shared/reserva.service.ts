@@ -13,9 +13,8 @@ export class Reservaservice {
   httpOptions = {
     headers: new HttpHeaders(
       { 
-
       "Access-Control-Allow-Methods": "OPTIONS,POST,GET",
-      "Access-Control-Allow-Origin": "http://192.168.0.10:8080",
+      "Access-Control-Allow-Origin": "http://localhost:8080:8080",
       'Content-Type': 'application/json' ,
       'Accept':  'application/json;profile=urn:org.apache.isis/v1',
       'Authorization': 'Basic aXNpcy1tb2R1bGUtc2VjdXJpdHktYWRtaW46cGFzcw==',    
@@ -26,8 +25,8 @@ export class Reservaservice {
 
   addReserva(Reserva: Reserva): Observable<any> {
     return this.http.post<Reserva>('http://localhost:8080/restful/services/ReservaHabitacion/actions/crearReservaDeHabitacion/invoke', Reserva, this.httpOptions)
-      .pipe(
-        catchError(this.handleError<Reserva>('Add Reserva'))
+      .pipe(        
+        catchError(this.handleError<Reserva>('Crear Reserva'))
       );
   }
 
@@ -48,7 +47,7 @@ export class Reservaservice {
   }
 
   updateReserva(id, Reserva: Reserva): Observable<any> {
-    return this.http.put('http://localhost:3000/api/update-Reserva/' + id, Reserva, this.httpOptions)
+    return this.http.put('http://localhost:3000/api/update-Reserva/' + id,  this.httpOptions)
       .pipe(
         tap(_ => console.log(`Reserva updated: ${id}`)),
         catchError(this.handleError<Reserva[]>('Update Reserva'))
